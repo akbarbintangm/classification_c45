@@ -33,10 +33,15 @@ class VerificationController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    /* public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+    } */
+
+    public function index() 
+    {
+        return view('auth.verify');
     }
 }

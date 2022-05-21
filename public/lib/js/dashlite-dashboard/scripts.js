@@ -524,8 +524,10 @@
     }
 
     // Dark Mode Switch @since v2.0
-    NioApp.ModeSwitch = function() {
-        var toggle = $('.dark-switch');
+    NioApp.ModeSwitch = function () {
+        var bodyPage = $('.nk-body');
+        var toggle = $('.dark-switch-2');
+        var toggled = $('.dark-switch-2').is(':checked');
 
         /* if($body.hasClass('dark-mode')){
             toggle.addClass('active');
@@ -538,37 +540,64 @@
             $body.toggleClass('dark-mode');
         }) */
 
-        if (localStorage.getItem('darkMode')===null){
+        if ((localStorage.getItem('darkMode')===null) || (sessionStorage.getItem('darkMode')===null)){
             localStorage.setItem('darkMode', "false");
+            sessionStorage.setItem('darkMode', "false");
         }
 
         checkStatus();
 
         function checkStatus(){
-            if (localStorage.getItem('darkMode')==="true"){
-                toggle.checked = true;
-                toggle.addClass('active');
-                $body.toggleClass('dark-mode');
+            if ((localStorage.getItem('darkMode')==="true") || (sessionStorage.getItem('darkMode')==="true")){
+                $('.dark-switch-2').checked;
+                $('.dark-switch-2').attr('checked', 'checked').addClass('active');
+                $('.nk-body').toggleClass('dark-mode');
             } else {
-                toggle.checked = false;
-                toggle.removeClass('active');
-                $body.toggleClass('light-mode');
+                $('.dark-switch-2').removeAttr('checked', 'checked').removeClass('active');
+                $('.nk-body').toggleClass('light-mode');
             }
         }
 
-        toggle.on('click', function(e) {
-            if (localStorage.getItem('darkMode')==="true"){
-                localStorage.setItem('darkMode', "false");
-                toggle.removeClass('active');
-                $body.toggleClass('light-mode');
-                window.location.reload();
-            } else{
+        $('.dark-switch-2').change(function() {
+            if ($('.dark-switch-2:checked').length > 0) {
+                $('.dark-switch-2').checked = true;
+                $('.dark-switch-2').addClass('active').attr('checked', 'checked');
+                $('.nk-body').addClass('dark-mode').removeClass('light-mode');
                 localStorage.setItem('darkMode', "true");
-                toggle.addClass('active');
-                $body.toggleClass('dark-mode');
-                window.location.reload();
+                sessionStorage.setItem('darkMode', "true");
+            } else {
+                $('.dark-switch-2').checked = false;
+                $('.dark-switch-2').removeClass('active').removeAttr('checked', 'checked');
+                $('.nk-body').addClass('light-mode').removeClass('dark-mode');
+                localStorage.setItem('darkMode', "false");
+                sessionStorage.setItem('darkMode', "false");
             }
         });
+
+        /* toggle.on('change', function(e) {
+            if (toggled.length > 0) {
+                if ((localStorage.getItem('darkMode')==="true") || (sessionStorage.getItem('darkMode')==="true")){
+                    toggle.checked = true;
+                    toggle.addClass('active');
+                    bodyPage.toggleClass('dark-mode');
+                } else {
+                    toggle.checked = false;
+                    toggle.removeClass('active');
+                    bodyPage.toggleClass('light-mode');
+                }
+            }
+            else {
+                if ((localStorage.getItem('darkMode')==="true") || (sessionStorage.getItem('darkMode')==="true")){
+                    toggle.checked = true;
+                    toggle.addClass('active');
+                    bodyPage.toggleClass('dark-mode');
+                } else {
+                    toggle.checked = false;
+                    toggle.removeClass('active');
+                    bodyPage.toggleClass('light-mode');
+                }
+            }
+        }); */
     }
 
     // Knob @v1.0
