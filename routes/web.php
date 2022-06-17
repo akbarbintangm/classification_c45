@@ -51,10 +51,18 @@ Route::controller(RegisterController::class)->group(function () {
 
 /* Route::middleware(['auth'])->group(function () { */
     /* Dashboard */
-    Route::controller(HomeController::class)->group(function () {
+    /* Route::controller(HomeController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/home', 'index')->name('home');
         Route::get('/dashboard', 'index')->name('dashboard');
         Route::get('/classification', 'classification')->name('classification');
-    });
+    }); */
 /* }); */
+
+Route::get('/', function(){
+    return view('home');
+})->name('dashboard');
+
+Route::get('/classification', function(){
+    return view('classification');
+})->name('classification');

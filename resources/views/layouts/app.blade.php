@@ -18,10 +18,14 @@
     {{-- StyleSheets --}}
     <link rel="stylesheet" href="{{ asset('lib/css/dashlite-dashboard/dashlite.min.css?ver=2.9.1') }}">
     <link id="skin-default" rel="stylesheet" href="{{ asset('lib/css/dashlite-dashboard/theme.min.css?ver=2.9.1') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <link rel="stylesheet" href="{{ asset('lib/css/main.min.css') }}">
     @yield('meta-link')
+    @livewireStyles
 </head>
 
 <body class="nk-body @yield('body')">
@@ -34,9 +38,13 @@
     <script src="{{ asset('lib/js/dashlite-dashboard/bundle.min.js?ver=2.9.1') }}" type="text/javascript"></script>
     <script src="{{ asset('lib/js/dashlite-dashboard/scripts.min.js?ver=2.9.1') }}" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+        integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js" type="text/javascript"></script>
     @yield('script')
     <script src="{{ asset('lib/js/main.min.js') }}" type="text/javascript"></script>
+    @livewireScripts
 </body>
 
 </html>
